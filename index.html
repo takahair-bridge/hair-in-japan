@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="en" class="en-only">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Hair, in Japan — before you send the first message.</title>
+<meta name="description" content="Hair, in Japan. A few questions, and the message is written for you — in English, with the Japanese underneath. Send it to any salon in Japan before you go.">
+<meta property="og:title" content="Hair, in Japan">
+<meta property="og:description" content="A few questions. At the end, the message is written — and you decide who receives it.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400&family=Zen+Old+Mincho:wght@400;500;600&family=Zen+Kaku+Gothic+New:wght@300;400&display=swap" rel="stylesheet">
+<script>if(location.search.indexOf('ja=1')>=0)document.documentElement.className='';</script>
+<style>
+:root{
+  --paper:#fdfaf7; --paper-2:#f7f2ec; --rule:#e8e0d8; --rule-soft:#efe8e1;
+  --ink:#3a2e2a; --muted:#9e8a80; --gold:#b8953a;
+  --en:'Newsreader',Georgia,serif; --ja:'Zen Old Mincho',serif; --ui:'Zen Kaku Gothic New',system-ui,sans-serif;
+}
+/* 訪れる人には英語だけを見せる。日本語は消さずに伏せてある（?ja=1 で表示） */
+html.en-only .q-ja,html.en-only .q-note,html.en-only .multi-hint,html.en-only .opt .ja,
+html.en-only .block .ja,html.en-only .photos .ja,html.en-only .res-h-ja,html.en-only .h1-ja,
+html.en-only .lede-ja,html.en-only .gains .t small,html.en-only .chk .ja,html.en-only .note .ja,
+html.en-only .quiet .ja,html.en-only .voice .ja,html.en-only .eyebrow .ja,html.en-only .foot .ja,html.en-only .mailnote .ja{display:none}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0;overflow-x:hidden}
+body{
+  background:var(--paper);color:var(--ink);font-family:var(--en);font-weight:300;line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  background-image:
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='w'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/><feColorMatrix type='saturate' values='0'/></filter><rect width='180' height='180' filter='url(%23w)' opacity='0.035'/></svg>"),
+    repeating-linear-gradient(90deg,rgba(160,140,125,.020) 0 1px,transparent 1px 3px);
+}
+.wrap{max-width:580px;margin:0 auto;padding:0 26px 120px;position:relative;perspective:1700px}
+.topbar{position:sticky;top:0;z-index:20;background:linear-gradient(var(--paper) 72%,rgba(253,250,247,0));padding:20px 0 12px}
+.mark{font-family:var(--en);font-size:15px;letter-spacing:.14em;font-weight:400}
+
+/* ---- ページをめくる ---- */
+.page{transform-origin:left center;position:relative}
+.page::before{content:"";position:absolute;left:-24px;top:0;bottom:0;width:24px;pointer-events:none;
+  background:linear-gradient(90deg,rgba(160,140,125,0),rgba(160,140,125,.09));opacity:0;transition:opacity .3s}
+.page.turning::before{opacity:1}
+.page.out{animation:pgOut .26s ease-in forwards}
+.page.in{animation:pgIn .34s ease-out both}
+@keyframes pgOut{to{transform:rotateY(-15deg) translateX(-7px);opacity:0}}
+@keyframes pgIn{from{transform:rotateY(13deg) translateX(11px);opacity:0}to{transform:none;opacity:1}}
+.hashira{position:absolute;right:-52px;top:8px;writing-mode:vertical-rl;font-family:var(--ja);font-size:11px;letter-spacing:.34em;color:var(--muted);opacity:.6}
+.folio{text-align:right;font-family:var(--ja);font-size:12px;color:var(--muted);letter-spacing:.2em;margin:38px 0 0;opacity:.7}
+@media (max-width:900px){
+  .hashira{right:-19px;top:2px;font-size:8px;letter-spacing:.3em;opacity:.4}
+  /* 綴じ：左端に、紙を綴じた影 */
+  .wrap::before{content:"";position:fixed;left:0;top:0;bottom:0;width:11px;z-index:5;pointer-events:none;
+    background:linear-gradient(90deg,rgba(160,140,125,.20),rgba(160,140,125,.05) 60%,rgba(160,140,125,0))}
+}
+@media (prefers-reduced-motion:reduce){.page.out,.page.in{animation:none;opacity:1;transform:none}}
+
+.screen{display:none}
+.screen.on{display:block}
+
+
+/* ---- 便箋 ---- */
+.pad{background:var(--paper-2);border:1px solid var(--rule);padding:13px 15px 15px;margin:0 0 26px;
+  max-height:0;opacity:0;overflow:hidden;transition:max-height .5s ease,opacity .4s ease}
+.pad.open{max-height:230px;opacity:1}
+.pad-label{font-family:var(--ui);font-size:9px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:9px}
+.pad-lines{margin:0;padding:0;list-style:none}
+.pad-lines li{font-family:var(--en);font-size:13px;line-height:1.55;border-bottom:1px solid var(--rule-soft);padding:5px 0;opacity:.55}
+.pad-lines li:last-child{opacity:1}
+
+/* ---- 質問 ---- */
+.eyebrow{font-family:var(--ui);font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);margin:0 0 20px}
+.q{font-family:var(--en);font-weight:400;font-size:27px;line-height:1.32;margin:0 0 10px;letter-spacing:-.005em}
+.q-ja{font-family:var(--ja);font-size:13.5px;color:var(--muted);margin:0 0 6px;line-height:1.8}
+.qhair{width:34px;height:1px;background:var(--gold);opacity:.8;margin:18px 0 18px}
+.q-note-en{font-size:13.5px;color:var(--muted);margin:0 0 4px;line-height:1.6}
+.q-note{font-family:var(--ja);font-size:11.5px;color:var(--muted);opacity:.85;margin:0 0 26px}
+.opts{list-style:none;margin:0;padding:0}
+.opt{display:block;width:100%;text-align:left;cursor:pointer;background:transparent;border:0;border-top:1px solid var(--rule);
+  padding:19px 34px 19px 2px;position:relative;color:inherit;font-family:var(--en);font-size:17.5px;font-weight:300;line-height:1.45;
+  transition:padding-left .3s ease,color .3s ease}
+.opts .opt:last-child{border-bottom:1px solid var(--rule)}
+.opt .ja{display:block;font-family:var(--ja);font-size:12px;color:var(--muted);margin-top:7px;line-height:1.7}
+.opt:hover,.opt:focus-visible{padding-left:11px;outline:none}
+.opt:focus-visible{color:var(--gold)}
+.opt::after{content:"";position:absolute;right:6px;top:50%;width:0;height:1px;background:var(--gold);transform:translateY(-50%);transition:width .35s ease}
+.opt:hover::after,.opt:focus-visible::after,.opt.picked::after{width:16px}
+.opt.picked{color:var(--gold)}
+.multi-hint{font-family:var(--ja);font-size:11.5px;color:var(--muted);margin:0 0 16px}
+.next{margin-top:28px;width:100%;background:var(--ink);color:var(--paper);border:0;padding:16px;cursor:pointer;font-family:var(--ui);font-size:12px;letter-spacing:.18em;text-transform:uppercase}
+.next[disabled]{background:var(--rule);color:#c4b6ad;cursor:default}
+.back{display:block;background:transparent;border:0;margin:0 0 18px;padding:2px 0;cursor:pointer;
+  font-family:var(--ui);font-size:11px;letter-spacing:.2em;color:var(--muted);text-transform:uppercase}
+.back:hover,.back:focus-visible{color:var(--gold);outline:none}
+
+/* ---- 扉（表紙） ---- */
+.cover{
+  text-align:center;padding:14px 0 0;
+  /* 市松：うっすら */
+  background:repeating-conic-gradient(rgba(160,140,125,.045) 0% 25%,transparent 0% 50%) 50% / 76px 76px;
+  animation:coverIn .8s ease both;
+}
+@media (prefers-reduced-motion:reduce){.cover{animation:none}}
+@keyframes coverIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+/* 題簽（だいせん）＝ 和書の表紙に貼る題名の紙 */
+.daisen{
+  display:inline-block;background:var(--paper);border:1px solid var(--rule);
+  padding:22px 13px;margin:6px 0 26px;box-shadow:0 1px 0 rgba(160,140,125,.12);
+}
+.daisen span{
+  writing-mode:vertical-rl;font-family:var(--ja);font-weight:500;font-size:19px;
+  letter-spacing:.28em;line-height:1;color:var(--ink)
+}
+.cover .hair{width:34px;height:1px;background:var(--gold);margin:0 auto 24px;opacity:.8}
+.cover h1{
+  font-family:var(--en);font-weight:300;font-size:33px;line-height:1.26;
+  margin:0 auto 16px;letter-spacing:-.015em;max-width:15em
+}
+.cover h1 em{font-style:italic;color:var(--gold)}
+.cover .h1-ja{font-family:var(--ja);font-size:12.5px;color:var(--muted);line-height:2;margin:0 0 26px}
+.lede{font-size:16.5px;margin:0 auto 12px;line-height:1.72;max-width:26em}
+.lede b{font-weight:500;color:var(--gold)}
+.lede-ja{font-family:var(--ja);font-size:12px;color:var(--muted);line-height:2;margin:0 0 30px}
+/* 目次のように、手に入るものを三つ */
+.gains{
+  list-style:none;margin:0 auto 30px;padding:22px 0;max-width:23em;text-align:left;
+  border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)
+}
+.gains li{display:flex;gap:13px;align-items:baseline;margin-bottom:15px}
+.gains li:last-child{margin-bottom:0}
+.gains .n{font-family:var(--ja);font-size:12.5px;color:var(--gold);letter-spacing:.1em;flex:none}
+.gains .t{font-size:15px;line-height:1.5}
+.gains .t small{display:block;font-family:var(--ja);font-size:11px;color:var(--muted);margin-top:4px;line-height:1.7}
+.meta{font-family:var(--ui);font-size:10px;letter-spacing:.16em;color:var(--muted);text-transform:uppercase;margin:0 0 20px}
+.start{width:100%;background:var(--ink);color:var(--paper);border:0;padding:18px;cursor:pointer;font-family:var(--ui);font-size:12px;letter-spacing:.2em;text-transform:uppercase}
+
+/* ---- 結果 ---- */
+.res-h{font-family:var(--en);font-weight:300;font-size:29px;line-height:1.3;margin:30px 0 8px}
+.res-h em{font-style:italic;color:var(--gold)}
+.res-h-ja{font-family:var(--ja);font-size:12.5px;color:var(--muted);margin:0 0 4px;line-height:1.9}
+.block{border-top:1px solid var(--rule);padding-top:26px;margin-top:36px}
+.block-no{font-family:var(--ja);font-size:15px;color:var(--gold);margin:0 0 12px;letter-spacing:.3em}
+.block h2{font-family:var(--en);font-weight:400;font-size:21px;margin:0 0 12px;line-height:1.35}
+.block p{font-size:15.5px;margin:0 0 13px;line-height:1.72}
+.block .ja{font-family:var(--ja);font-size:12.5px;color:var(--muted);line-height:1.95;margin:0 0 13px}
+.chip{display:inline-block;font-family:var(--ui);font-size:12px;border:1px solid var(--rule);background:#fff;padding:9px 13px;margin:4px 6px 4px 0;color:var(--ink)}
+.selrow{position:relative}
+.selrow select{appearance:none;-webkit-appearance:none;padding-right:34px}
+.selrow::after{content:'\25bc';position:absolute;right:12px;bottom:13px;font-size:9px;color:var(--gold);pointer-events:none}
+.selrow select.empty{color:var(--muted);border-color:var(--gold)}
+.photos{border:1px solid var(--gold);background:#fffdf8;padding:15px 17px;margin:18px 0 14px}
+.photos h4{margin:0 0 9px;font-family:var(--ui);font-size:10px;letter-spacing:.2em;color:var(--gold)}
+.photos p.chk-l{margin:0 0 5px;font-family:var(--en);font-size:15px}
+.photos p.chk-l span{color:var(--gold);margin-right:8px}
+.photos .ja{font-family:var(--ja);font-size:12.5px;color:var(--muted);line-height:1.9;margin:9px 0 0}
+.names{border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:14px 0;margin:18px 0}
+.names h4{margin:0 0 10px;font-family:var(--ui);font-size:10px;letter-spacing:.2em;color:var(--muted)}
+.names dl{margin:0}
+.names dt{font-family:var(--ja);font-size:15px;color:var(--ink);margin-top:8px}
+.names dd{margin:2px 0 0;font-family:var(--en);font-size:13.5px;color:var(--muted);line-height:1.55}
+.names .foot{font-family:var(--ja);font-size:12.5px;color:var(--muted);margin:12px 0 0;line-height:1.9}
+.afterCopy{display:none;margin-top:12px}
+.afterCopy.on{display:block}
+.mailnote{font-family:var(--ja);font-size:11.5px;color:var(--muted);line-height:1.85;margin:7px 0 0}
+.warnline{color:var(--gold);font-weight:600}
+.opt-rule{list-style:none;height:1px;background:rgba(58,46,42,.14);margin:16px 6px 14px}
+.chk{list-style:none;margin:0 0 8px;padding:0;counter-reset:c}
+.chk li{counter-increment:c;position:relative;padding-left:26px;margin-bottom:11px;font-size:15px;line-height:1.6}
+.chk li::before{content:counter(c);position:absolute;left:0;top:2px;font-family:var(--ui);font-size:10px;color:var(--gold)}
+.chk .ja{display:block;font-family:var(--ja);font-size:11.5px;color:var(--muted);margin-top:4px}
+
+details{border-top:1px solid var(--rule-soft);padding:14px 0}
+details summary{cursor:pointer;list-style:none;font-family:var(--ui);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);display:flex;justify-content:space-between}
+details summary::-webkit-details-marker{display:none}
+details summary::after{content:"＋";color:var(--gold)}
+details[open] summary::after{content:"−"}
+details .inner{padding-top:16px}
+
+.voice{background:var(--paper-2);padding:24px 22px;border-left:2px solid var(--gold)}
+.voice p{font-size:16px;line-height:1.75;margin:0 0 12px}
+.voice p:last-child{margin-bottom:0}
+.voice .sig{font-family:var(--ui);font-size:10px;letter-spacing:.2em;color:var(--muted)}
+.name-me{border:1px solid var(--gold);background:#fff;padding:22px 20px;margin-top:18px}
+.name-me p{font-size:15.5px;line-height:1.7;margin:0 0 11px}
+.name-me p:last-child{margin-bottom:0}
+.name-me .ja{font-family:var(--ja);font-size:12px;color:var(--muted);line-height:1.9}
+
+/* ---- 言語切替 ---- */
+
+.letter{background:#fff;border:1px solid var(--rule);padding:24px 20px;margin:0 0 0;position:relative;overflow:hidden}
+.letter p{font-size:15px;line-height:1.8;margin:0 0 12px}
+.letter p:last-child{margin-bottom:0}
+.letter p.bul{margin:0 0 2px;padding-left:2px}
+.letter p.bul+p:not(.bul){margin-top:12px}
+.letter .ja-body{font-family:var(--ja);font-size:12.5px;line-height:2;color:var(--ink);border-top:1px solid var(--rule-soft);padding-top:14px;margin-top:16px;white-space:pre-line}
+.crease{position:absolute;left:0;right:0;top:50%;height:1px;background:var(--rule);opacity:0;transform:scaleX(0);transform-origin:left}
+.crease.on{animation:fold .6s ease forwards}
+.crease::after{content:"";position:absolute;left:0;right:0;top:-2px;height:4px;background:linear-gradient(rgba(160,140,125,.10),rgba(255,255,255,0))}
+@keyframes fold{to{opacity:1;transform:scaleX(1)}}
+@media (prefers-reduced-motion:reduce){.crease.on{animation:none;opacity:1;transform:scaleX(1)}}
+.gloss{font-size:13.5px;color:var(--muted);line-height:1.7;margin:12px 0 0;font-style:italic}
+.selrow{margin:16px 0 6px}
+.selrow label{display:block;font-family:var(--ui);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:7px}
+select{width:100%;font-family:var(--en);font-size:15px;color:var(--ink);background:#fff;border:1px solid var(--rule);padding:12px;border-radius:0;appearance:none}
+.copy{width:100%;background:var(--ink);color:var(--paper);border:0;padding:16px;cursor:pointer;font-family:var(--ui);font-size:12px;letter-spacing:.18em;text-transform:uppercase;margin-top:10px}
+.copy.done{background:var(--gold)}
+
+/* ---- キャンセルの作法 ---- */
+.note{border-left:2px solid var(--gold);background:var(--paper-2);padding:16px 18px;margin:22px 0 0}
+.note p{font-size:14.5px;line-height:1.7;margin:0 0 9px}
+.note p:last-child{margin-bottom:0}
+.note .ja{font-family:var(--ja);font-size:11.5px;color:var(--muted);line-height:1.9}
+
+/* ---- 所要時間 ---- */
+.dur{width:100%;border-collapse:collapse;margin:6px 0 12px}
+.dur td{border-bottom:1px solid var(--rule-soft);padding:11px 0;font-size:14.5px;vertical-align:top}
+.dur td+td{text-align:right;white-space:nowrap;color:var(--gold);font-family:var(--ui);font-size:12.5px;padding-left:12px}
+
+
+.quiet{border-top:1px solid var(--rule);margin-top:36px;padding-top:22px}
+.quiet a{color:var(--muted);text-decoration:none;font-size:14.5px;border-bottom:1px solid var(--rule);padding-bottom:2px;
+  display:inline-flex;align-items:center;gap:9px}
+.quiet .ig{width:14px;height:14px;flex:none;opacity:.9}
+.quiet a:hover{color:var(--gold);border-color:var(--gold)}
+.quiet .ja{font-family:var(--ja);font-size:11.5px;color:var(--muted);margin-top:9px}
+
+.closing{margin:72px calc(50% - 50vw) 0;padding:104px 26px 96px;min-height:100vh;
+  display:flex;flex-direction:column;justify-content:center;
+  background:repeating-conic-gradient(rgba(160,140,125,.045) 0% 25%,transparent 0% 50%) 50% / 76px 76px}
+.closing-in{max-width:580px;width:100%;margin:0 auto;text-align:center}
+/* 裏表紙の題簽（表紙と同じ作り） */
+.backcover{display:inline-flex;flex-direction:row-reverse;gap:26px;
+  background:var(--paper);border:1px solid var(--rule);box-shadow:0 1px 0 rgba(160,140,125,.12);
+  padding:24px 18px}
+.tategumi{writing-mode:vertical-rl;font-family:var(--ja);font-weight:400;font-size:21px;line-height:2.3;
+  letter-spacing:.16em;color:var(--ink);height:442px;margin:0}
+.tate-en{writing-mode:vertical-rl;font-family:var(--en);font-style:italic;font-size:16px;line-height:2.05;
+  letter-spacing:.01em;color:var(--muted);height:442px;margin:0}
+@media (max-width:420px){
+  .backcover{padding:20px 14px;gap:19px}
+  .tategumi{font-size:18px;height:392px}
+  .tate-en{font-size:14px;height:392px}
+}
+.okuzuke{font-family:var(--ja);font-size:10.5px;color:var(--muted);letter-spacing:.22em;
+  margin:34px 0 0;line-height:2;text-align:center}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="topbar"><span class="mark">bridge</span></div>
+  <section class="screen on" id="s-intro">
+    <div class="page in"><div class="hashira">ブリッジ</div>
+      <div class="cover">
+        <div class="daisen"><span>日本で、髪を。</span></div>
+        <div class="hair"></div>
+        <h1>More than a haircut.<br>An experience you’ll only have <em>here</em>.</h1>
+        <p class="h1-ja">髪だけじゃない体験を、美容院で。</p>
+        <p class="lede">The hard part isn’t the haircut. It’s booking it.<br>A few questions — if they take even a little of the worry away, they’ve done their job.</p>
+        <p class="lede-ja">いくつかの質問で、不安が少しでもなくなってもらえたら。</p>
+        <ul class="gains">
+          <li><span class="n">一</span><span class="t">How to find a stylist in the first place, and how to tell the right one.<small>どうやってスタイリストを探せばいいか。その見分け方。</small></span></li>
+          <li><span class="n">二</span><span class="t">A message you can send straight to a salon, or to the stylist you’ve been watching.<small>ヘアサロンや気になっているスタイリストへそのまま送れる文面。</small></span></li>
+          <li><span class="n">三</span><span class="t">Japanese you can simply hold up on the day.<small>当日、そのまま見せられる日本語。</small></span></li>
+        </ul>
+        <p class="meta">a few questions · about 3 minutes · free · nothing is saved</p>
+        <button class="start" id="beginBtn">Begin</button>
+      </div>
+    </div>
+  </section>
+  <section class="screen" id="s-q"></section>
+  <section class="screen" id="s-res"></section>
+</div>
+
+<script>
+/* ===================== 設問 ===================== */
+var Q=[
+{id:'why',en:'Before anything else — why Japan?',ja:'まず最初に。どうして、日本で？',
+ noteEn:'There’s no right answer — choose the one that feels closest.',note:'正解はありません。いちばん近いものを。',
+ opts:[
+ {en:"I’ve been watching salons here for a long time. I want to know it from the chair, not the screen.",ja:'日本の美容室が、ずっと気になっていた',line:"I’ve been watching salons in Japan for a long time, and I’d like to finally experience one myself."},
+ {en:"I’d like to go home looking a little different.",ja:'帰るときには、少し違う自分でいたい',line:"I’m here on a trip, and I’d like to go home looking a little different."},
+ {en:"I’ve heard how carefully it’s done here. That’s what I’m coming for.",ja:'あの丁寧さを、実際に受けてみたい',line:"I’ve heard how carefully things are done in Japan, and that’s a large part of why I’m coming."},
+ {en:"I live here. And I still haven’t found the right hands.",ja:'住んでいる。でも、まだ「この人」に出会えていない',line:"I live in Japan, and I’m still looking for the right stylist for me."}]},
+{id:'want',en:'And the part you’re looking forward to most?',ja:'その中で、いちばん楽しみなのは？',note:'',
+ opts:[
+ {en:'To sit still, and let someone take care of my hair and scalp.',ja:'ゆっくり、髪と頭皮のケアをしてみたい',key:'care',line:"What I’d like most is one unhurried hour — hair and scalp, nothing rushed."},
+ {en:'The whole ritual — the shampoo, the hands, the time they take.',ja:'日本ならではの丁寧さを、味わってみたい',key:'exp',line:"What I’m looking forward to most is the whole ritual — the shampoo, the hands, the time you take."},
+ {en:'I want to leave with it in better condition than when I arrived.',ja:'来たときより、いい状態にして帰りたい',key:'cond',line:"What matters most to me is going home with my hair in better condition than it is now."},
+ {en:'This is the time for a real change.',ja:'思い切って変えてみたい',key:'bold',line:"Honestly, I’m ready for a real change."}]},
+{id:'pause',en:'Is anything worrying you?',ja:'何か、不安なことはありますか？',
+ noteEn:'Most people worry about the same four things.',note:'不安になるところは、たいてい同じです。',
+ opts:[
+ {en:"I wouldn’t know how to explain it — not even in my own language.",ja:'母国語でも、ニュアンスなどうまく言えない気がする',key:'words'},
+ {en:"There’s no way to tell if they’ve worked with hair like mine.",ja:'自分と似た髪質を、扱ったことがあるかどうか分からない',key:'texture'},
+ {en:"Once I’m there, can I ask for something else on the menu?",ja:'行ってから他のメニューをお願いすることができるのかな？',key:'add'},
+ {en:"The better it looks, the less it feels like a place for me.",ja:'良さそうなお店ほど、自分の場所じゃない気がする',key:'door'}]},
+{id:'plan',en:'Have you settled on a salon yet?',ja:'行きたいお店は、もう決まっていますか？',
+ noteEn:'It’s fine if you haven’t.',note:'決まっていなくても大丈夫です。',
+ opts:[
+ {en:'Yes — I know exactly where I’m going.',ja:'決まっている',key:'set'},
+ {en:'I’ve saved a few. I haven’t picked one.',ja:'何軒か見ている。まだ選べていない',key:'few'},
+ {en:'Not yet. I don’t know where to start.',ja:'まだ。どう探せばいいのか分からない',key:'none'},
+ {en:'I’ll decide once I’m there.',ja:'その場で決めるつもり',key:'later'}]},
+{id:'context',gate:true,en:'And you —',ja:'あなたは——',
+ gates:[
+ {key:'visit',en:'Visiting Japan.',ja:'日本に、行きます／来ています',
+  sub:{id:'after',en:'What comes after this?',ja:'このあとに、何がありますか？',
+   noteEn:'Whichever comes first.',note:'いちばん近いものを、一つ。',
+   opts:[
+   {en:'There’s somewhere I’m going straight after the salon.',ja:'美容院のあと、予定しているところへ行く',key:'go',line:'I have somewhere to go straight after, so the finish matters on the day.'},
+   {en:'I’m meeting someone while I’m here.',ja:'人に会う予定がある',key:'meet',line:'I’m seeing someone while I’m here, so it needs to look right that day.'},
+   {en:'Tomorrow I move on to the next place.',ja:'明日は、新しいところへの移動日',key:'move',line:'I move on to another place the next day, so something that holds up while I’m traveling would help.'},
+   {en:'My flight home isn’t far off.',ja:'もうすぐ、帰国予定',key:'fly',line:'I fly home before long, so I want to be able to keep it up on my own.'}]}},
+ {key:'live',en:'Living in Japan.',ja:'日本で、暮らしています',
+  sub:{id:'doubt',en:'Something brought you here. What is it?',ja:'今、引っかかっているのは？',
+   noteEn:'',note:'',
+   opts:[
+   {en:'Nothing’s wrong. It’s the same suggestion every time.',ja:'悪くはない。ただ、毎回おなじ提案になる',key:'same',line:'Nothing has gone wrong — I’ve just been getting the same suggestion every time.'},
+   {en:'I’ve never been sure they understand my hair.',ja:'髪質を本当に分かってもらえている気がしない',key:'texture',line:'I’ve never been sure my hair type was fully understood.'},
+   {en:'I’ve been going there too long to start asking now.',ja:'長く通いすぎて、今さら言い出しにくい',key:'long',line:'I’ve been going to the same place for years, and it has become hard to ask for anything new.'},
+   {en:'I moved. I’m starting over in a new area.',ja:'引っ越した。近くで探し直している',key:'moved',line:'I’ve moved, so I’m starting again in a new area.'}]}}]},
+{id:'texture',eyebrow:'Now, about your hair<span class="ja"> · ここから、髪のことを少しだけ詳しく</span>',en:'Left alone to dry, what does it do?',ja:'何もせずに乾かすと、どうなりますか？',noteEn:'Most people are somewhere between two. Choose the nearer one.',note:'多くの人は2つの間です。近い方で。',
+ opts:[
+ {en:'Straight — it falls flat.',ja:'まっすぐ。ぺたんと落ちる',key:'straight',line:'My hair is straight.'},
+ {en:'Wavy — it bends, more when it’s humid.',ja:'ウェーブ。湿気があるとうねる',key:'wavy',line:'My hair is wavy.'},
+ {en:'Curly — it forms rings on its own.',ja:'カール。自然に輪になる',key:'curly',line:'My hair is curly.'},
+ {en:'Coily — tight, springy, dense.',ja:'コイリー。細かく、密で、弾力がある',key:'coily',line:'My hair is coily.'}]},
+{id:'history',en:'Has anything been done to it?',ja:'これまでに、何かしていますか？',noteEn:'Choose as many as apply.',note:'当てはまるもの、いくつでも。',multi:true,multiKind:'lines',
+ excl:{none:'*'},
+ opts:[
+ {en:'Nothing. It’s never been colored.',ja:'何もしていない',key:'none',line:'It’s never been colored.'},
+ {en:'Colored, but never lightened.',ja:'カラーはしている。明るくはしていない',key:'color',line:'It’s been colored, but never lightened.'},
+ {en:'Highlighted or bleached.',ja:'ハイライト・ブリーチをしている',key:'bleach',line:'It’s been highlighted or bleached before.'},
+ {en:'Permed, relaxed or straightened.',ja:'パーマ・縮毛矯正をしている',key:'perm',line:'It’s been permed or chemically straightened before.'},
+ {en:'Henna or a plant-based dye.',ja:'ヘナ・植物性の染料を使っている',key:'henna',line:'I’ve used henna or a plant-based dye on it.'}]},
+{id:'ask',en:'So — what would you like done?',ja:'それで、何をしてもらいたいですか？',note:'',multi:true,multiHintEn:'Choose as many as you like.',multiHint:'いくつ選んでも大丈夫です。',ruleBefore:5,
+ excl:{open:'*',spa:['ends','shape']},
+ opts:[
+ {en:'Just the ends. Keep the length.',ja:'毛先だけ。長さは変えずに',key:'ends',frag:'a trim on the ends, keeping the length'},
+ {en:'A different shape — bangs, layers, something new.',ja:'形を変えたい。前髪やレイヤーも',key:'shape',frag:'a different shape — bangs, layers, something new'},
+ {en:'Color — lighter, darker, or a change of tone.',ja:'色を変えたい。明るく、暗く、トーンを',key:'color',frag:'color — lighter, darker or a change of tone'},
+ {en:'No scissors. Treatment and scalp.',ja:'切らなくていい。ケアと頭皮を',key:'spa',frag:'no cutting — treatment and scalp care'},
+ {en:'Make it behave — smoother, less frizz.',ja:'まとまるように。パサつきを抑えたい',key:'smooth',frag:'help getting it smoother and less frizzy'},
+ {en:'I haven’t decided. I’d rather talk it through.',ja:'まだ決めていない。相談しながら決めたい',key:'open',frag:'to talk it through with you and decide together'},
+ {en:'Everyone here looks so put together. I’d like to leave the same way.',ja:'日本の人みたいに、きちんと手入れされた感じにしたい',key:'like',frag:'to leave looking as put together as everyone here does'}]}
+];
+
+/* ===================== 多言語（三のみ・要ネイティブ確認） ===================== */
+var L={
+ en:{
+  lead:'One message. Choose the day below, then copy it as it is — the Japanese underneath is for the salon.',
+  when:'When will you be there?',copy:'Copy the message',copied:'Copied — now keep a copy for the day',
+  shareB:'Email it to myself',
+  reveal:'One thing we didn’t mention: the Japanese is already written for you, underneath. You won’t have to type a single character of it.',
+  gloss:'It says: when you are coming, what your hair is, what you would like, and one question — can you take this on?',
+  cancel1:'If your plans change, tell them. Even one line. Even the day before.',
+  cancel2:'Not showing up without a word is the one thing that is not forgiven here.'}
+};
+
+var lang='en';
+
+/* 表紙の見出し 3案（検証用・確定したら1つ残す） */
+var A={},idx=-1,lines=[],tab='short',resident=false;
+var HIST=[],PRESET=null;
+function clone(o){return JSON.parse(JSON.stringify(o));}
+function pushState(i,sub){HIST.push({i:i,sub:!!sub,lines:lines.slice(),A:clone(A)});}
+function reenter(st,cur){
+  lines=st.lines.slice();A=clone(st.A);PRESET=cur;
+  turnTo(function(){
+    if(st.sub){var g=QI('context'),gg=null;
+      for(var x=0;x<g.gates.length;x++) if(g.gates[x].key===A.context) gg=g.gates[x];
+      if(gg){paintQ(gg.sub,st.i,true);return;}}
+    paint(st.i);
+  });
+}
+function back(){
+  if(!HIST.length) return;
+  var cur=clone(A);
+  HIST.pop();
+  var st=HIST.pop();
+  if(!st){HIST=[];lines=[];A={};idx=-1;PRESET=null;turnTo(function(){show('s-intro');});return;}
+  reenter(st,cur);
+}
+function backFromResult(){
+  var cur=clone(A),st=HIST.pop();
+  if(st) reenter(st,cur);
+}
+function restorePicks(q){
+  if(!PRESET){return;}
+  var v=PRESET[q.gate?'context':q.id];PRESET=null;
+  if(v===undefined) return;
+  var ob=elQ.querySelectorAll('.opt');
+  if(q.gate){var g=QI('context');for(var x=0;x<g.gates.length;x++) if(g.gates[x].key===v&&ob[x]) ob[x].classList.add('picked');return;}
+  if(q.multi){A[q.id]=v.slice();
+    for(var pz=0;pz<v.length;pz++) if(ob[v[pz]]) ob[v[pz]].classList.add('picked');
+    var nb=document.getElementById('nx');if(nb) nb.disabled=(v.length===0);
+  }else{A[q.id]=v;if(ob[v]) ob[v].classList.add('picked');}
+}
+function QI(id){for(var i=0;i<Q.length;i++){if(Q[i].id===id)return Q[i];}return null;}
+function SUBQ(){var g=QI('context');if(!g||!A.context)return null;for(var i=0;i<g.gates.length;i++){if(g.gates[i].key===A.context)return g.gates[i].sub;}return null;}
+function ctxOpt(){var s=SUBQ();if(!s)return null;var v=A[s.id];return (v===undefined)?null:s.opts[v];}
+function texK(){return QI('texture').opts[A.texture].key;}
+function histKeys(){var q=QI('history'),a=A.history||[],o=[];for(var i=0;i<a.length;i++)o.push(q.opts[a[i]].key);return o;}
+var elQ=document.getElementById('s-q'),elRes=document.getElementById('s-res');
+var KANSUJI=['一','二','三','四','五','六','七','八','九','十'];
+
+function show(id){var a=document.querySelectorAll('.screen');for(var i=0;i<a.length;i++)a[i].classList.remove('on');
+  document.getElementById(id).classList.add('on');window.scrollTo(0,0);}
+function padHTML(){
+  if(!lines.length) return '<div class="pad"></div>';
+  var v=lines.slice(-3),h='<div class="pad open"><span class="pad-label">Your message</span><ul class="pad-lines">';
+  for(var i=0;i<v.length;i++) h+='<li>'+v[i]+'</li>';
+  return h+'</ul></div>';
+}
+function turnTo(fn){var c=document.querySelector('.page');if(!c){fn();return;}c.classList.add('turning','out');setTimeout(fn,260);}
+document.getElementById('beginBtn').addEventListener('click',function(){go(0);});
+function go(i){turnTo(function(){paint(i);});}
+
+function paint(i){
+  idx=i;
+  if(i>=Q.length){renderResult();return;}
+  var q=Q[i];
+  if(q.gate){paintGate(q,i);return;}
+  paintQ(q,i,false);
+}
+function paintGate(q,i){
+  pushState(i,false);
+  var h='<div class="page in"><div class="hashira">ブリッジ</div>';
+  h+='<button class="back" id="bk">\u2190 Back</button>';
+  h+=padHTML();
+  h+='<h2 class="q">'+q.en+'</h2><p class="q-ja">'+q.ja+'</p>';
+  h+='<div class="qhair"></div><ul class="opts">';
+  for(var k=0;k<q.gates.length;k++) h+='<li><button class="opt" data-k="'+k+'">'+q.gates[k].en+'<span class="ja">'+q.gates[k].ja+'</span></button></li>';
+  h+='</ul><p class="folio">'+KANSUJI[i]+'</p></div>';
+  elQ.innerHTML=h;show('s-q');
+  document.getElementById('bk').addEventListener('click',back);
+  restorePicks(q);
+  var b=elQ.querySelectorAll('.opt');
+  for(var j=0;j<b.length;j++){
+    b[j].addEventListener('click',function(){
+      var k=parseInt(this.getAttribute('data-k'),10),g=q.gates[k];
+      A.context=g.key;resident=(g.key==='live');
+      this.classList.add('picked');
+      setTimeout(function(){paintQ(g.sub,i,true);},420);
+    });
+  }
+}
+function conflicts(q,key){
+  var out=[];if(!q.excl)return out;
+  var r=q.excl[key];
+  if(r==='*'){for(var i=0;i<q.opts.length;i++){if(q.opts[i].key!==key)out.push(q.opts[i].key);}}
+  else if(r){for(var i2=0;i2<r.length;i2++)out.push(r[i2]);}
+  for(var kk in q.excl){var v=q.excl[kk];
+    if(kk===key)continue;
+    if(v==='*'||(v&&v.indexOf&&v.indexOf(key)>=0)){if(out.indexOf(kk)<0)out.push(kk);}}
+  return out;
+}
+function paintQ(q,i,isSub){
+  pushState(i,isSub);
+  var h='<div class="page in"><div class="hashira">ブリッジ</div>';
+  h+='<button class="back" id="bk">\u2190 Back</button>';
+  h+=padHTML();
+  if(q.eyebrow) h+='<p class="eyebrow">'+q.eyebrow+'</p>';
+  h+='<h2 class="q">'+q.en.replace(/\n/g,'<br>')+'</h2><p class="q-ja">'+q.ja+'</p>';
+  h+='<div class="qhair"></div>';
+  if(q.noteEn) h+='<p class="q-note-en">'+q.noteEn+'</p>';
+  if(q.note) h+='<p class="q-note">'+q.note+'</p>';
+  if(q.multi&&q.multiHintEn) h+='<p class="q-note-en">'+q.multiHintEn+'</p>';
+  if(q.multi&&q.multiHint) h+='<p class="multi-hint">'+q.multiHint+'</p>';
+  h+='<ul class="opts">';
+  for(var k=0;k<q.opts.length;k++){
+    if(q.ruleBefore===k) h+='<li class="opt-rule"></li>';
+    h+='<li><button class="opt" data-k="'+k+'">'+q.opts[k].en+'<span class="ja">'+q.opts[k].ja+'</span></button></li>';
+  }
+  h+='</ul>';
+  if(q.multi) h+='<button class="next" id="nx" disabled>'+(i>=Q.length-1?'See your message':'Continue')+'</button>';
+  h+='<p class="folio">'+KANSUJI[i]+'</p></div>';
+  elQ.innerHTML=h;show('s-q');
+  document.getElementById('bk').addEventListener('click',back);
+  restorePicks(q);
+  var b=elQ.querySelectorAll('.opt');
+  for(var j=0;j<b.length;j++){
+    b[j].addEventListener('click',function(){
+      var k=parseInt(this.getAttribute('data-k'),10);
+      if(q.multi){
+        this.classList.toggle('picked');
+        if(this.classList.contains('picked')){
+          var bad=conflicts(q,q.opts[k].key),all=elQ.querySelectorAll('.opt');
+          for(var x=0;x<all.length;x++){
+            var kx=parseInt(all[x].getAttribute('data-k'),10);
+            if(bad.indexOf(q.opts[kx].key)>=0) all[x].classList.remove('picked');
+          }
+        }
+        var sel=[],ps=elQ.querySelectorAll('.opt.picked');
+        for(var p=0;p<ps.length;p++) sel.push(parseInt(ps[p].getAttribute('data-k'),10));
+        sel.sort(function(a,c){return a-c;});
+        A[q.id]=sel;document.getElementById('nx').disabled=(sel.length===0);
+      }else{
+        var pk=elQ.querySelectorAll('.opt.picked');
+        for(var pj=0;pj<pk.length;pj++) pk[pj].classList.remove('picked');
+        A[q.id]=k;if(q.opts[k].line) lines.push(q.opts[k].line);
+        this.classList.add('picked');setTimeout(function(){go(idx+1);},500);
+      }
+    });
+  }
+  if(q.multi){
+    document.getElementById('nx').addEventListener('click',function(){
+      var sel=A[q.id];
+      if(q.multiKind==='lines'){
+        var o=[];for(var s=0;s<sel.length;s++) o.push(q.opts[sel[s]].line);
+        lines.push(o.join(' '));
+      }else{
+        var f=[];for(var s2=0;s2<sel.length;s2++) f.push(q.opts[sel[s2]].frag);
+        lines.push('I\u2019d like '+joinList(f)+'.');
+      }
+      go(idx+1);
+    });
+  }
+}
+function joinList(a){if(a.length===1)return a[0];if(a.length===2)return a[0]+' and '+a[1];
+  return a.slice(0,-1).join(', ')+' and '+a[a.length-1];}
+
+/* ===================== 結果データ ===================== */
+var TEX={
+ straight:{label:'Straight hair',who:'This is the hair Japanese stylists have cut all their lives. Almost anywhere will do it well. If you want it slow, look for a salon with very few chairs.',ja:'日本の美容師がいちばん慣れている髪です。ゆっくりしたいなら、席数の少ないお店を。',search:['Osaka hair salon English','small salon Osaka few seats']},
+ wavy:{label:'Wavy hair',who:'Look for someone who has cut waves before — ideally someone who can cut it dry, and who plans around the bend instead of drying it flat first.',ja:'うねりを切った経験のある人を。できれば濡らさずに切れる人を。',search:['dry cut wavy hair Osaka','wavy hair specialist Japan']},
+ curly:{label:'Curly hair',who:'If you want the curl kept as curl, look for a curl specialist \u2014 there are fewer of them here, and they are worth the train ride. If you would rather have it smoothed and blown out, most good salons can do that. The two are different jobs, so say which one you mean.',ja:'カールを活かしたいなら、カール専門の人を。ブローでまとめたいなら、多くのお店で対応できます。別の仕事なので、どちらなのかを先に伝えると早いです。',search:['curly hair specialist Osaka','blow dry smoothing Osaka salon']},
+ coily:{label:'Coily hair',who:'Look for a salon that names textured or coily hair on its own page. This is the one place to be certain before you book — a general salon meaning well is still the wrong hands.',ja:'コイリーを自分から掲げている店を。ここだけは、確かめてから決めてください。',search:['textured hair salon Tokyo','coily hair salon Japan']}
+};
+var WISH={
+ care:{en:'You came here wanting one unhurried hour — hair, scalp, nothing rushed.',name:'Head spa',nameline:'That has a name here, and you can ask for it by name.',ja:'あなたが望んでいるものには、日本での呼び名があります。'},
+ exp:{en:'You came here for the ritual — the shampoo, the hands, the time they take.',name:'',nameline:'One thing about time: if you are late, the slow part is the first thing to go. Ten minutes can cost you the head spa.',ja:'時間のことだけ。遅れると、いちばん先に削られるのが、その「ゆっくり」の部分です。10分の遅れで、頭皮ケアが消えることがあります。'},
+ cond:{en:'You came here to leave with better hair than you arrived with.',name:'',nameline:'Ask what they will do, and what you should do the morning after. Both answers matter.',ja:'当日の施術と、翌朝の扱い。両方を聞いてください。'},
+ bold:{en:'You came here ready to do something you would not dare do at home.',name:'',nameline:'Put that in the first message. A stylist who reads “I’m ready” plans a different day from one who reads “just a trim”.',ja:'その一行を、最初の文面に入れてください。「思い切りたい」と読んだ美容師は、組み立てそのものを変えます。'}
+};
+var PAUSE_TITLE={words:'You said you wouldn’t know how to explain it.',texture:'You said there’s no way to tell if they’ve worked with hair like yours.',add:'You wondered whether you could ask for something else once you are there.',door:'You said the better it looks, the less it feels like yours.'};
+var PAUSE_ANSWER={
+ words:{en:'That is what this page is for. It is written out below, and you will not have to explain a thing.',ja:'そのために作りました。下に書いてあります。説明しなくて大丈夫です。'},
+ texture:{en:'Then ask them outright. The message below ends with exactly that question.',ja:'はっきり聞きましょう。下の文面は、その質問で終わっています。'},
+ add:{en:'Do ask — before the day, if you can. A time slot here is tied to the menu you booked, so anything added on the day can push into the appointment that follows.',ja:'聞いてみてください。できれば当日より前に。予約枠がメニューに紐づいているため、当日の追加はそのあとの予約に影響することがあります。'},
+ door:{en:'The smaller and quieter a salon looks, the more it tends to run on a single message. That is all it takes.',ja:'静かで小さな店ほど、たいてい一通のメッセージで決まります。それだけです。'}
+};
+var PAUSE_ASK={
+ words:'I’m not confident explaining hair, even in my own language, so I’ve written everything down here.',
+ texture:'The one thing I’m unsure about is whether you’ve worked with my hair texture before.',
+ add:'One more thing — if I also wanted a treatment or a head spa, should I add it to the booking now rather than ask on the day?',
+ door:'Your work looks beautiful, and I wasn’t sure I should write — so I decided to just ask.'
+};
+function askKeys(){var q=QI('ask');return A.ask.map(function(i){return q.opts[i].key;});}
+function planKey(){return QI('plan').opts[A.plan].key;}
+function bridgeStance(){
+  var t=texK(),k=askKeys();
+  if(t==='coily') return 'no';
+  if(t==='curly') return 'askCurl';
+  if(t==='wavy' && k.indexOf('smooth')<0 && k.indexOf('spa')<0 && k.indexOf('ends')<0 && k.indexOf('like')<0 && k.indexOf('open')<0 && k.indexOf('color')<0) return 'askWave';
+  return 'yes';
+}
+var STANCE={
+ yes:{en:'And if it helps \u2014 I can take it on too.',ja:'bridge\u3067\u3082\u65bd\u8853\u53ef\u80fd\u3067\u3059\u3002'},
+ askCurl:{en:'I don\u2019t finish curls as curls, but smoothed and blown out I can. Send me the two photographs and I\u2019ll tell you right away.',ja:'\u30ab\u30fc\u30eb\u3092\u30ab\u30fc\u30eb\u306e\u307e\u307e\u4ed5\u4e0a\u3052\u308b\u3053\u3068\u306f\u3067\u304d\u307e\u305b\u3093\u304c\u3001\u30d6\u30ed\u30fc\u3067\u307e\u3068\u3081\u308b\u65b9\u5411\u306a\u3089\u627f\u308c\u307e\u3059\u3002\u5199\u771f\u30922\u679a\u9001\u3063\u3066\u3044\u305f\u3060\u3051\u308c\u3070\u3001\u3059\u3050\u306b\u304a\u7b54\u3048\u3057\u307e\u3059\u3002'},
+ askWave:{en:'Waves finished as waves \u2014 shaped around the movement \u2014 isn\u2019t something I\u2019m good at. Smoothed down, I can. Send me the two photographs and I\u2019ll tell you right away.',ja:'\u3046\u306d\u308a\u3092\u6d3b\u304b\u3057\u3066\u4ed5\u4e0a\u3052\u308b\u306e\u306f\u5f97\u610f\u3067\u306f\u3042\u308a\u307e\u305b\u3093\u3002\u307e\u3068\u3081\u308b\u65b9\u5411\u306a\u3089\u627f\u308c\u307e\u3059\u3002\u5199\u771f\u30922\u679a\u9001\u3063\u3066\u3044\u305f\u3060\u3051\u308c\u3070\u3001\u3059\u3050\u306b\u304a\u7b54\u3048\u3057\u307e\u3059\u3002'},
+ no:{en:'I\u2019m sorry \u2014 coily hair is not something I take on. Please look for someone who works with it every day; that is the right call here.',ja:'\u7533\u3057\u8a33\u3042\u308a\u307e\u305b\u3093\u304c\u3001\u30b3\u30a4\u30ea\u30fc\u30d8\u30a2\u306f\u627f\u3063\u3066\u304a\u308a\u307e\u305b\u3093\u3002\u65e5\u5e38\u7684\u306b\u6271\u3063\u3066\u3044\u308b\u62c5\u5f53\u8005\u3092\u304a\u63a2\u3057\u304f\u3060\u3055\u3044\u3002'}
+};
+var NAMES=[
+ {ja:'\u30d8\u30c3\u30c9\u30b9\u30d1',en:'head spa \u2014 the unhurried scalp hour'},
+ {ja:'\u9aea\u8cea\u6539\u5584',en:'kami-shitsu kaizen \u2014 asked for as \u201cglass hair\u201d outside Japan'},
+ {ja:'\u30c8\u30ea\u30fc\u30c8\u30e1\u30f3\u30c8',en:'the in-salon treatment, not a home one'},
+ {ja:'\u7e2e\u6bdb\u77ef\u6b63',en:'shukumou kyousei \u2014 known abroad as Japanese straightening'}
+];
+
+/* ===================== 結果 ===================== */
+function renderResult(){
+  var texKey=texK(),tex=TEX[texKey];
+  var pk=QI('pause').opts[A.pause].key,wk=QI('want').opts[A.want].key,w=WISH[wk],hk=histKeys(),k=askKeys();
+  var st=bridgeStance(),found=(planKey()==='set');
+  var h='<div class="page in"><div class="hashira">ブリッジ</div>';
+
+  h+='<button class="back" id="bkr">\u2190 Back</button>';
+  /* 見出し */
+  h+='<h1 class="res-h">'+(found?'Send this to the stylist you’ve found.':'Send this to the stylists you find.')+
+     '<br><em>'+STANCE[st].en+'</em></h1>';
+  h+='<p class="res-h-ja">'+(found?'見つけている美容師さんに、以下を送ってみてください。':'これから見つける美容師さんに、以下を送ってください。')+
+     '<br>'+STANCE[st].ja+'</p>';
+
+  /* 一｜探し方 */
+  h+='<div class="block"><p class="block-no">一</p><h2>'+tex.label+'</h2><p>'+tex.who+'</p><p class="ja">'+tex.ja+'</p>';
+  h+='<p style="font-family:var(--ui);font-size:10px;letter-spacing:.2em;color:var(--muted);text-transform:uppercase;margin:16px 0 8px">Search for</p>';
+  for(var s2=0;s2<tex.search.length;s2++) h+='<span class="chip">'+tex.search[s2]+'</span>';
+  h+='<p style="margin-top:14px">I am not going to name any salon for you. The one you choose is your stylist.</p>';
+  h+='<p class="ja">お店の名前は挙げません。あなたが選んだ人が、あなたの美容師です。</p>';
+  if(wk==='bold'){
+    h+='<p style="margin-top:22px">Put that in the message. A stylist who reads “I’m ready” plans a different day from one who reads “just a trim”.</p>';
+    h+='<p class="ja">「思い切りたい」と読んだ美容師は、組み立てそのものを変えます。文面に残しておいてください。</p>';
+  }
+  h+='<h2 style="margin-top:30px">You were probably going to walk in</h2>';
+  h+='<p>Walking in does work here. But you get whoever happens to be free — and the people you actually want are usually booked.</p>';
+  h+='<p>That is the whole reason this message exists. Sent ahead of time, it turns “whoever is free” into “the person I chose.”</p>';
+  h+='<p class="ja">飛び込みでも入れます。ただし、空いている人に当たるだけです。あなたが行きたい人は、たいてい埋まっています。<br>この文面は、そのためのものです。事前に送るだけで、「空いている人」が「選んだ人」に変わります。</p>';
+  h+='<h2 style="margin-top:30px">How long to set aside</h2>';
+  h+='<table class="dur"><tr><td>A cut</td><td>60–90 min</td></tr>'+
+     '<tr><td>Cut and color</td><td>2.5–3.5 hrs</td></tr>'+
+     '<tr><td>Adding scalp care</td><td>+30–60 min</td></tr>'+
+     '<tr><td>Bleach or highlights</td><td>4 hrs +</td></tr></table>';
+  h+='<p>Salons here take longer than you are used to. That is the service, not a delay — the washing alone can run fifteen minutes. <strong>Do not book anything tight afterwards.</strong></p>';
+  h+='<p class="ja">日本のサロンは長いです。遅れているのではなく、それが施術です。直後に予定を入れないでください。</p>';
+  h+='<details><summary>How to tell before you go</summary><div class="inner">';
+  h+='<p>“English OK” and “has cut hair like yours” are two different things.</p><ol class="chk">';
+  h+='<li>Do their photos include someone with hair like yours?<span class="ja">作品写真に、あなたと同じ髪質の人が写っているか</span></li>';
+  h+='<li>Have they ever worked outside Japan?<span class="ja">海外で働いた経験があるか</span></li>';
+  h+='<li>Do they ask about your hair’s history before picking up the scissors?<span class="ja">切り始める前に、髪の履歴を聞いてくれるか</span></li>';
+  h+='<li>Can you book without a phone call — by DM, or on their own site? Japanese booking sites often ask for a Japanese phone number.<span class="ja">電話なしで予約できるか（日本の予約サイトは日本の電話番号を求めることがあります）</span></li>';
+  h+='</ol></div></details>';
+  h+='<details><summary>Money, and kokorozuke</summary><div class="inner">';
+  h+='<p>There is no tipping in Japan. The price on the menu is the final price. Nothing is added at the end.</p>';
+  h+='<p>But there is <em>kokorozuke</em>（お心づけ）. Not payment for what was done — a little money folded into a small envelope and handed over quietly, before anything begins. Handing it at the end is fine too. Either way, no one will think less of you.</p>';
+  h+='<p>The amount is entirely yours to decide. What they receive is not the size of it.</p>';
+  h+='<p>Two things, so it goes well. Never hand over bare cash — fold it into a small envelope; any convenience store has them for about ¥100. And if they decline, let it go. That is also Japan.</p>';
+  h+='<p class="ja">日本にチップはありません。メニューの価格が、そのまま最終価格です。ただ、日本には「お心づけ」があります。始まる前に小さな袋に包んでそっと渡すもの。終わったあとでも失礼にはあたりません。裸のお金は渡さないこと。断られたら、引くこと。</p>';
+  h+='</div></details>';
+  h+='<details><summary>Before you fly home</summary><div class="inner">';
+  if(k.indexOf('color')>=0||hk.indexOf('color')>=0||hk.indexOf('bleach')>=0){
+    h+='<p>Color made here settles over about five to six weeks. Day one is not the finished picture — that is how it is meant to settle.</p>';
+  }
+  h+='<p>The morning after, do nothing different. Let it fall the way it was cut. That first morning is the real test of the cut, and it is the thing you will want in your photographs.</p>';
+  h+='<p>Whatever they hand you at the end — write down the name before you leave. You will want it again in six weeks, from the other side of the world.</p>';
+  h+='<p><strong>And if you buy it: anything over 100 ml cannot go in your carry-on.</strong> Put it in the bag you check, or you will be leaving it at the airport.</p>';
+  h+='<p class="ja">色は5〜6週かけて落ち着きます。翌朝はいつも通りで大丈夫です。使ったものの名前は控えておいてください。買って帰る場合、100mlを超える液体は機内持ち込みができません。預け荷物に入れてください。</p>';
+  h+='</div></details></div>';
+
+  /* TAKAの声（番号なし） */
+  h+='<div class="block"><div class="voice">';
+  h+='<p>Let me tell you about myself first.</p>';
+  h+='<p>There are things I can’t do. Finishing waves <em>as waves</em> — leaving the movement in, shaping around it — I’m not good at that. Coily hair I don’t take on at all.</p>';
+  h+='<p>Smoothing waves down, though — blowing them out, calming the frizz — that I can do.</p>';
+  h+='<p>bridge is one chair. One guest at a time, and no one waiting behind you.</p>';
+  h+='<p>So send it to a few people, not one. Ask them straight. Someone will say yes. And those are the right hands.</p>';
+  h+='<p>If you’d rather not judge it on your own, write to me any time.</p>';
+  h+='<p class="ja">ご自身での判断が難しいようであれば、いつでもご連絡ください。</p>';
+  h+='<p class="sig">TAKA — bridge, Kitahama, Osaka</p></div>';
+  h+='</div>';
+
+  /* 二｜文面 */
+  h+='<div class="block"><p class="block-no">二</p><h2>'+PAUSE_TITLE[pk]+'</h2>';
+  h+='<p>'+PAUSE_ANSWER[pk].en+'</p><p class="ja">'+PAUSE_ANSWER[pk].ja+'</p>';
+  h+='<p id="leadTxt"></p>';
+  h+='<div class="selrow"><label id="whenLbl"></label><select id="whenSel">'+
+     (resident?'<option value="live">I live in Japan</option>':
+      '<option value="">— select —</option><option value="today">Today</option>'+
+      '<option value="tomorrow">Tomorrow</option><option value="the day after tomorrow">The day after tomorrow</option>'+
+      '<option value="in the next few days">In the next few days</option>'+
+      '<option value="in the next few weeks">In the next few weeks</option>')+
+     '</select></div>';
+
+  h+='<div class="photos"><h4>TWO PHOTOGRAPHS, SENT WITH THIS</h4>';
+  h+='<p class="chk-l"><span>☑</span>Your hair as it is now</p>';
+  h+='<p class="chk-l"><span>☑</span>What you’d like</p>';
+  h+='<p style="margin:10px 0 0">They can tell more from these two than from anything written here. Send them together. Dry, untouched, from behind if you can.</p>';
+  h+='<p class="ja">今の髪と、なりたい髪。この2枚で、書かれたどの一行よりも早く伝わります。文面と一緒に送ってください。乾いた状態で、できれば後ろからも。</p></div>';
+
+  h+='<div class="letter notranslate" id="letterBox" translate="no"></div>';
+  h+='<div class="note" id="revealNote"></div>';
+  h+='<p class="gloss" id="glossTxt"></p>';
+
+  h+='<div class="names"><h4>THINGS PEOPLE ASK FOR BY NAME HERE</h4><dl lang="ja" translate="no">';
+  for(var n=0;n<NAMES.length;n++) h+='<dt>'+NAMES[n].ja+'</dt><dd>'+NAMES[n].en+'</dd>';
+  h+='</dl><p class="foot"><span style="font-family:var(--en)">If you want any of these, add the word before you copy.</span><span class="ja" style="display:block;margin-top:6px">欲しいものがあれば、コピーする前に一語だけ足してください。</span></p></div>';
+
+  h+='<button class="copy" id="copyBtn"></button>';
+  h+='<div class="afterCopy" id="afterCopy"><a href="#" id="mailMe"></a>';
+  h+='<p class="mailnote"><span style="font-family:var(--en)">Show this email at the salon on the day.</span><span class="ja" style="display:block;margin-top:6px">※ 自分にメールで残した文面を、当日、美容師さんにお見せください。</span></p></div>';
+  h+='<div class="note" id="cancelNote"></div>';
+  h+='</div>';
+
+  h+='<div class="quiet"><a href="https://www.instagram.com/takahair_bridge/" target="_blank" rel="noopener">'+
+     '<svg class="ig" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true">'+
+     '<rect x="3" y="3" width="18" height="18" rx="5.4"/><circle cx="12" cy="12" r="4.1"/>'+
+     '<circle cx="17.3" cy="6.7" r="1.15" fill="currentColor" stroke="none"/></svg>'+
+     'Ask me anything on Instagram — @takahair_bridge</a><p class="ja">bridgeへの相談も、Instagramよりいつでもどうぞ。</p></div>';
+
+  h+='<div class="closing"><div class="closing-in">';
+  h+='<div class="backcover"><div class="tategumi">この旅に残る、一枚。<br>そこに、どんな思いを込めたいですか。</div>'+
+     '<p class="tate-en">The photograph you’ll keep from this trip.<br>What would you like it to hold?</p></div>';
+  h+='<p class="okuzuke">bridge ／ TAKA</p></div></div></div>';
+
+  elRes.innerHTML=h;show('s-res');
+  document.getElementById('bkr').addEventListener('click',backFromResult);
+  var sel=document.getElementById('whenSel');
+  function markSel(){ if(sel.value==='') sel.classList.add('empty'); else sel.classList.remove('empty'); }
+  markSel();
+  sel.addEventListener('change',function(){markSel();buildLetter();});
+  document.getElementById('copyBtn').addEventListener('click',doCopy);
+  paintUI();
+  setTimeout(function(){var c=document.getElementById('crease');if(c)c.classList.add('on');},600);
+}
+
+function paintUI(){
+  var t=L[lang];
+  document.getElementById('leadTxt').textContent=t.lead;
+  document.getElementById('whenLbl').textContent=t.when;
+  document.getElementById('glossTxt').textContent=t.gloss;
+  document.getElementById('revealNote').innerHTML='<p>'+t.reveal+'</p>'+
+    '<p class="ja">先に言いませんでしたが、日本語はもう下に書いてあります。一文字も打つ必要はありません。</p>';
+  document.getElementById('mailMe').innerHTML=t.shareB;
+  document.getElementById('cancelNote').innerHTML='<p>'+t.cancel1+'</p><p>'+t.cancel2+'</p>'+
+    '<p class="ja">予定が変わったら、必ず伝えてください。一行でも、前日でも。何も言わずに来ないことだけは、日本では許されません。</p>';
+  buildLetter();
+}
+
+/* ---------- 文面 ---------- */
+function jaTex(){return {straight:'直毛',wavy:'ウェーブ',curly:'カール',coily:'コイリー'}[texK()];}
+function jaHist(){var m={none:'カラー履歴なし',color:'カラーあり（明るくはしていない）',bleach:'ブリーチ・ハイライトあり',perm:'パーマ／縮毛矯正あり',henna:'ヘナ・植物性の染料あり'};return histKeys().map(function(x){return m[x];}).join('、');}
+function histLines(){var q=QI('history'),a=A.history||[],o=[];for(var i=0;i<a.length;i++)o.push(q.opts[a[i]].line);return o.join(' ');}
+function jaAskList(){
+  var m={ends:'毛先のカット（長さは変えない）',shape:'形を変えたい',color:'カラー',spa:'カットなし・トリートメントと頭皮ケア',smooth:'まとまるように・パサつきを抑えたい',open:'相談しながら決めたい',like:'手入れの行き届いた雰囲気にしたい・自宅ケアを知りたい'};
+  return askKeys().map(function(x){return m[x];});
+}
+function jaAsk(){
+  var a=jaAskList();
+  if(a.length===1) return 'ご希望：'+a[0];
+  return 'ご希望：\n'+a.map(function(x){return '・'+x;}).join('\n');
+}
+function jaGreet(){
+  var v=document.getElementById('whenSel').value;
+  if(v==='live') return 'はじめまして。日本在住です。ぜひ伺いたいです。';
+  return 'はじめまして。'+whenJa()+'伺いたいです。';
+}
+/* 「思い切って変えたい」×「切らない／毛先だけ」だけを選んだ人の吸収 */
+function boldConflict(){
+  if(QI('want').opts[A.want].key!=='bold') return null;
+  var k=askKeys();
+  if(k.indexOf('shape')>=0||k.indexOf('color')>=0||k.indexOf('smooth')>=0) return null;
+  if(k.indexOf('spa')>=0) return 'cut';
+  if(k.indexOf('ends')>=0) return 'length';
+  return null;
+}
+function wantLineEn(){
+  var b=boldConflict();
+  if(b==='cut') return 'Honestly, I\u2019m ready for a real change \u2014 any change other than a cut.';
+  if(b==='length') return 'Honestly, I\u2019m ready for a real change \u2014 any change other than the length.';
+  return QI('want').opts[A.want].line;
+}
+function jaWant(){
+  if(boldConflict()) return null;
+  var m={care:'ゆっくり、髪と頭皮のケアを',exp:'日本ならではの丁寧さを',cond:'来たときより、いい状態にして帰りたい',bold:'思い切って変えたい'};
+  return '楽しみにしていること：'+m[QI('want').opts[A.want].key];
+}
+function whenTxt(){
+  var v=document.getElementById('whenSel').value;
+  return v==='live'?'I live in Japan, and I\u2019d like to come to you.':v?'I\u2019d like to come '+v+'.':'I\u2019m hoping to visit you soon.';
+}
+function whenJa(){
+  var v=document.getElementById('whenSel').value;
+  return {'':'\u8fd1\u3044\u3046\u3061\u306b','today':'\u672c\u65e5','tomorrow':'\u660e\u65e5','the day after tomorrow':'\u660e\u5f8c\u65e5',
+   'in the next few days':'\u6570\u65e5\u306e\u3046\u3061\u306b','in the next few weeks':'\u6570\u9031\u9593\u306e\u3046\u3061\u306b','live':'\u65e5\u672c\u5728\u4f4f\u3067\u3059'}[v];
+}
+function textureAsk(){
+  var t=texK();
+  if(t==='straight') return null;
+  var m={wavy:{en:'wavy hair',ja:'\u30a6\u30a7\u30fc\u30d6'},curly:{en:'curly hair',ja:'\u30ab\u30fc\u30eb'},coily:{en:'coily hair',ja:'\u30b3\u30a4\u30ea\u30fc'}}[t];
+  return {en:'One thing I\u2019d like to ask \u2014 have you worked with '+m.en+' outside East Asian hair types before?',
+          ja:'\u3072\u3068\u3064\u3060\u3051\u4f3a\u3048\u305f\u3089\u3002\u30a2\u30b8\u30a2\u7cfb\u4ee5\u5916\u306e'+m.ja+'\u306e\u9aea\u3092\u3001\u6271\u308f\u308c\u305f\u3053\u3068\u306f\u3042\u308a\u307e\u3059\u304b\uff1f'};
+}
+function warnLines(){
+  var out=[],hk=histKeys(),k=askKeys(),bc=boldConflict();
+  if(bc==='cut') out.push('切らずにできる範囲で、思い切って変えたいです');
+  if(bc==='length') out.push('長さは変えずに、それ以外は思い切って変えたいです');
+  if(hk.indexOf('henna')>=0) out.push('\u30d8\u30ca\u30fb\u690d\u7269\u6027\u306e\u67d3\u6599\u3092\u4f7f\u3063\u3066\u3044\u307e\u3059');
+  if(k.indexOf('ends')>=0&&bc!=='length') out.push('\u6bdb\u5148\u3060\u3051\u3002\u9577\u3055\u306f\u5909\u3048\u306a\u3044\u3067\u304f\u3060\u3055\u3044');
+  if(k.indexOf('spa')>=0&&bc!=='cut') out.push('\u5207\u3089\u306a\u304f\u3066\u5927\u4e08\u592b\u3067\u3059\u3002\u30b1\u30a2\u3068\u982d\u76ae\u3092');
+  if(k.indexOf('smooth')>=0) out.push('\u3059\u304b\u305a\u306b\u3001\u307e\u3068\u307e\u308b\u3088\u3046\u306b\u3057\u3066\u304f\u3060\u3055\u3044');
+  if(k.indexOf('open')>=0) out.push('\u307e\u3060\u6c7a\u3081\u3066\u3044\u307e\u305b\u3093\u3002\u76f8\u8ac7\u3057\u306a\u304c\u3089\u6c7a\u3081\u305f\u3044\u3067\u3059');
+  return out;
+}
+function currentText(){
+  var texKey=texK(),q=QI('ask');
+  var f=[];for(var s=0;s<A.ask.length;s++) f.push(q.opts[A.ask[s]].frag);
+  var co=ctxOpt(),ak=askKeys(),ta=textureAsk();
+  var extra=(ak.indexOf('like')>=0)?'If there\u2019s something I should be doing at home for hair like mine, I\u2019d like to hear it. ':'';
+  var en=[];
+  en.push('Hello \u2014 I found your work and I\u2019d love to book with you. '+whenTxt());
+  en.push('My hair is '+texKey+'. '+histLines()+(co?' '+co.line:''));
+  if(f.length===1) en.push('I\u2019d like '+f[0]+'.');
+  else{ en.push('I\u2019d like:'); for(var b1=0;b1<f.length;b1++) en.push('\u2022 '+f[b1]); }
+  en.push(extra+wantLineEn());
+  en.push((ta?ta.en+' ':'')+'About how long should I set aside? Thank you for reading this.');
+  var wl=warnLines();
+  var ja=[];
+  ja.push(jaGreet());
+  ja.push('\u9aea\u8cea\uff1a'+jaTex()+'\uff0f'+jaHist()+(co?'\n'+(resident?'\u4eca\u306e\u72b6\u6cc1\uff1a':'\u5f53\u65e5\u306e\u4e8b\u60c5\uff1a')+co.ja:''));
+  ja.push(jaAsk());
+  var jw=jaWant(); if(jw) ja.push(jw);
+  for(var w1=0;w1<wl.length;w1++) ja.push('\u203b '+wl[w1]);
+  if(ta) ja.push(ta.ja);
+  ja.push('\u6240\u8981\u6642\u9593\u306e\u76ee\u5b89\u3082\u6559\u3048\u3066\u3044\u305f\u3060\u3051\u307e\u3059\u304b\u3002\n\u3088\u308d\u3057\u304f\u304a\u9858\u3044\u3044\u305f\u3057\u307e\u3059\u3002');
+  return {en:en.join('\n'),ja:ja.join('\n'),warn:wl};
+}
+function buildLetter(){
+  var t=currentText(),box=document.getElementById('letterBox');
+  var s='<div class="crease on"></div>',ps=t.en.split('\n');
+  for(var i=0;i<ps.length;i++) s+='<p'+(ps[i].indexOf('\u2022')===0?' class="bul"':'')+'>'+ps[i]+'</p>';
+  var jp=t.ja.split('\n'),jh='';
+  for(var j=0;j<jp.length;j++){
+    var line=jp[j];
+    if(line.indexOf('\u203b')===0) jh+='<span class="warnline">'+line+'</span><br>';
+    else jh+=line+'<br>';
+  }
+  s+='<p class="ja-body" lang="ja" translate="no">'+jh+'</p>';
+  box.innerHTML=s;
+  var b=document.getElementById('copyBtn');b.classList.remove('done');b.textContent=L[lang].copy;
+  document.getElementById('afterCopy').classList.remove('on');
+  document.getElementById('mailMe').href='mailto:?subject='+encodeURIComponent('For the salon in Japan')+'&body='+encodeURIComponent(t.en+'\n\n'+t.ja);
+}
+function doCopy(){
+  var t=currentText(),full=t.en+'\n\n'+t.ja,b=document.getElementById('copyBtn');
+  document.getElementById('afterCopy').classList.add('on');
+  function ok(){b.classList.add('done');b.textContent=L[lang].copied;document.getElementById('afterCopy').classList.add('on');}
+  function fb(){var ta=document.createElement('textarea');ta.value=full;ta.style.position='fixed';ta.style.opacity='0';
+    document.body.appendChild(ta);ta.select();try{document.execCommand('copy');ok();}catch(e){}document.body.removeChild(ta);}
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(full).then(ok,fb);}else{fb();}
+}
+
+</script>
+</body>
+</html>
