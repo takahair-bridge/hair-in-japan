@@ -105,12 +105,17 @@ body{
 @keyframes coverIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 /* 題簽（だいせん）＝ 和書の表紙に貼る題名の紙 */
 .daisen{
-  display:inline-block;background:var(--paper);border:1px solid var(--rule);
-  padding:22px 13px;margin:6px 0 26px;box-shadow:0 1px 0 rgba(160,140,125,.12);
+  display:inline-flex;align-items:center;justify-content:center;
+  background:var(--paper);border:1px solid var(--rule);
+  padding:22px 15px;margin:6px 0 26px;box-shadow:0 1px 0 rgba(160,140,125,.12);
 }
 .daisen span{
-  writing-mode:vertical-rl;font-family:var(--ja);font-weight:500;font-size:19px;
-  letter-spacing:.28em;line-height:1;color:var(--ink)
+  display:block;
+  writing-mode:vertical-rl;text-orientation:upright;
+  font-family:var(--ja);font-weight:500;font-size:19px;
+  letter-spacing:.28em;line-height:1;color:var(--ink);
+  /* 最後の一字のうしろにも字間が付くので、その分だけ戻す */
+  margin-bottom:-.28em;
 }
 .cover .hair{width:34px;height:1px;background:var(--gold);margin:0 auto 24px;opacity:.8}
 .cover h1{
@@ -233,8 +238,9 @@ select{width:100%;font-family:var(--en);font-size:15px;color:var(--ink);backgrou
 .backcover{display:inline-flex;flex-direction:row-reverse;gap:26px;
   background:var(--paper);border:1px solid var(--rule);box-shadow:0 1px 0 rgba(160,140,125,.12);
   padding:24px 18px}
-.tategumi{writing-mode:vertical-rl;font-family:var(--ja);font-weight:400;font-size:21px;line-height:2.3;
-  letter-spacing:.16em;color:var(--ink);height:442px;margin:0}
+.tategumi{writing-mode:vertical-rl;text-orientation:upright;
+  font-family:var(--ja);font-weight:400;font-size:21px;line-height:2.3;
+  letter-spacing:.16em;color:var(--ink);height:442px;margin:0 0 -.16em}
 .tate-en{writing-mode:vertical-rl;font-family:var(--en);font-style:italic;font-size:16px;line-height:2.05;
   letter-spacing:.01em;color:var(--muted);height:442px;margin:0}
 @media (max-width:420px){
