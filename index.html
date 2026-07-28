@@ -361,6 +361,38 @@ var L={
 var lang='en';
 
 /* 表紙の見出し 3案（検証用・確定したら1つ残す） */
+/* ===================== 数えるのは二つだけ =====================
+   ・reach 最後まで行った   ・copy コピーした
+   名前も文面もお客様の答えそのものも送らない。Cookieも使わない。
+   失敗しても画面は止めない（画像の読み込みとして投げるだけ）。 */
+var TRACK_URL='https://script.google.com/macros/s/AKfycbzdL_8bFIeOxZ7MjzwIIykTtKMkZeE7epj-VSYvVSmVc-2vLqSMDpiv6lZFWroxyMvT3Q/exec';
+var TRACKED={reach:false,copy:false};
+function trackSrc(){
+  var r=document.referrer||'',h='';
+  try{ if(r) h=r.split('/')[2].replace(/^www\./,''); }catch(e){}
+  if(!h) return 'direct';
+  if(h.indexOf('instagram')>=0) return 'instagram';
+  if(h.indexOf('tiktok')>=0) return 'tiktok';
+  if(h.indexOf('google')>=0) return 'google';
+  if(h.indexOf('hub.personalhairstylist')>=0) return 'hub';
+  if(h.indexOf('takahair-bridge.github.io')>=0) return 'oversea';
+  if(h.indexOf('lin.ee')>=0||h.indexOf('line.me')>=0) return 'line';
+  return 'other';
+}
+function track(t){
+  try{
+    if(TRACKED[t]) return; TRACKED[t]=true;
+    var tex='',st='';
+    try{ if(A.texture!==undefined){ tex=texK(); st=bridgeStance(); } }catch(e){}
+    var q='?k=hij&t='+t
+      +'&r='+encodeURIComponent(trackSrc())
+      +'&l='+encodeURIComponent((navigator.language||'').slice(0,12))
+      +'&d='+((window.innerWidth&&window.innerWidth<=900)?'mobile':'desktop')
+      +'&x='+encodeURIComponent(tex)+'&s='+encodeURIComponent(st);
+    var i=new Image(); i.src=TRACK_URL+q;
+  }catch(e){}
+}
+
 var A={},idx=-1,lines=[],tab='short',resident=false;
 var HIST=[],PRESET=null;
 function clone(o){return JSON.parse(JSON.stringify(o));}
@@ -683,7 +715,7 @@ function renderResult(){
      '<p class="tate-en">The photograph you’ll keep from this trip.<br>What would you like it to hold?</p></div>';
   h+='<p class="okuzuke">bridge ／ TAKA</p></div></div></div>';
 
-  elRes.innerHTML=h;show('s-res');
+  elRes.innerHTML=h;show('s-res');track('reach');
   document.getElementById('bkr').addEventListener('click',backFromResult);
   var sel=document.getElementById('whenSel');
   function markSel(){ if(sel.value==='') sel.classList.add('empty'); else sel.classList.remove('empty'); }
@@ -813,7 +845,7 @@ function buildLetter(){
 }
 function doCopy(){
   var t=currentText(),full=t.en+'\n\n'+t.ja,b=document.getElementById('copyBtn');
-  document.getElementById('afterCopy').classList.add('on');
+  document.getElementById('afterCopy').classList.add('on');track('copy');
   function ok(){b.classList.add('done');b.textContent=L[lang].copied;document.getElementById('afterCopy').classList.add('on');}
   function fb(){var ta=document.createElement('textarea');ta.value=full;ta.style.position='fixed';ta.style.opacity='0';
     document.body.appendChild(ta);ta.select();try{document.execCommand('copy');ok();}catch(e){}document.body.removeChild(ta);}
