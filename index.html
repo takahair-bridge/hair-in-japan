@@ -289,7 +289,8 @@ select{width:100%;font-family:var(--en);font-size:15px;color:var(--ink);backgrou
   <button id="jaBtn" type="button" onclick="hijToggleJa()" aria-pressed="false" title="日本語を表示 / Show Japanese">JA</button>
 <section class="screen on" id="s-intro">
     <div class="page in"><div class="hashira">ブリッジ</div>
-      <div class="cover">
+      <p class="ja-notice"><b>日本語は下にあります。</b><br>右上の「JA」を押すと、英文の下に日本語が出ます。</p>
+<div class="cover">
         <div class="daisen"><span>日本で、髪を。</span></div>
         <div class="hair"></div>
         <h1>More than a haircut.<br>An experience you’ll only have <em>here</em>.</h1>
@@ -940,5 +941,164 @@ function doCopy(){
 }
 
 </script>
+
+<style>
+/* ★ 2026-08-12 追加：日本語の案内（B-6）と読み物セクション（B-4／N6）。診断機能には影響しません */
+.ja-notice{max-width:620px;margin:0 auto 4px;padding:10px 20px 0;font-family:var(--ja);
+  font-size:12px;line-height:1.9;color:var(--muted);letter-spacing:.04em;text-align:center;}
+.ja-notice b{font-weight:500;color:var(--ink,#2a2320);}
+.reading{max-width:620px;margin:0 auto;padding:56px 20px 88px;border-top:1px solid rgba(0,0,0,.12);}
+.reading h2{font-size:19px;font-weight:400;margin:0 0 6px;line-height:1.6;letter-spacing:.02em;}
+.reading .lead{font-size:13px;line-height:1.95;margin:0 0 34px;opacity:.85;}
+.reading h3{font-size:15px;font-weight:400;margin:44px 0 14px;padding-bottom:7px;
+  border-bottom:1px solid rgba(0,0,0,.12);line-height:1.6;}
+.reading h4{font-size:13.5px;font-weight:500;margin:24px 0 6px;line-height:1.7;}
+.reading p{font-size:13px;line-height:1.95;margin:0 0 12px;}
+.reading ul{margin:0 0 16px;padding-left:1.1em;}
+.reading li{font-size:13px;line-height:1.85;margin-bottom:6px;}
+.reading .ja{display:block;font-family:var(--ja);font-size:11.5px;color:var(--muted);
+  margin-top:5px;line-height:1.8;letter-spacing:.04em;}
+.reading .foot{margin-top:48px;font-size:12px;line-height:1.9;opacity:.8;}
+/* ★2026-08-13 修正：読み物セクションの日本語は常に表示する。
+   冒頭で「日本語は下にあります」と約束しているため、ここを隠すと約束が破れる。
+   診断部分の日本語は今まで通り JA ボタンで出し入れする（挙動は変えていない）。 */
+.reading .ja{display:block !important}
+</style>
+
+<section class="reading">
+<h2>What this page says<span class="ja">このページに書かれていること</span></h2>
+<p class="lead">The questions above lead to one message written for you. Everything the page can say is written out here, so you can read it without answering anything.<span class="ja">上の質問に答えると、あなた宛の文面が1つ表示されます。ここには、このページが伝えられることをすべて書き出しています。答えなくても読めます。</span></p>
+<h3>The questions<span class="ja">8つの質問</span></h3>
+<h4>1. Before anything else — why Japan?<span class="ja">まず最初に。どうして、日本で？</span></h4>
+<p>There’s no right answer — choose the one that feels closest.<span class="ja">正解はありません。いちばん近いものを。</span></p>
+<ul>
+<li>I’ve been watching salons here for a long time. I want to know it from the chair, not the screen.<span class="ja">日本の美容室が、ずっと気になっていた</span></li>
+<li>I’d like to go home looking a little different.<span class="ja">帰るときには、少し違う自分でいたい</span></li>
+<li>I’ve heard how carefully it’s done here. That’s what I’m coming for.<span class="ja">あの丁寧さを、実際に受けてみたい</span></li>
+<li>I live here. And I still haven’t found the right hands.<span class="ja">住んでいる。でも、まだ「この人」に出会えていない</span></li>
+</ul>
+<h4>2. And the part you’re looking forward to most?<span class="ja">その中で、いちばん楽しみなのは？</span></h4>
+<ul>
+<li>To sit still, and let someone take care of my hair and scalp.<span class="ja">ゆっくり、髪と頭皮のケアをしてみたい</span></li>
+<li>The whole ritual — the shampoo, the hands, the time they take.<span class="ja">日本ならではの丁寧さを、味わってみたい</span></li>
+<li>I want to leave with it in better condition than when I arrived.<span class="ja">来たときより、いい状態にして帰りたい</span></li>
+<li>This is the time for a real change.<span class="ja">思い切って変えてみたい</span></li>
+</ul>
+<h4>3. Is anything worrying you?<span class="ja">何か、不安なことはありますか？</span></h4>
+<p>Most people worry about the same four things.<span class="ja">不安になるところは、たいてい同じです。</span></p>
+<ul>
+<li>I wouldn’t know how to explain it — not even in my own language.<span class="ja">母国語でも、ニュアンスなどうまく言えない気がする</span></li>
+<li>There’s no way to tell if they’ve worked with hair like mine.<span class="ja">自分と似た髪質を、扱ったことがあるかどうか分からない</span></li>
+<li>Once I’m there, can I ask for something else on the menu?<span class="ja">行ってから他のメニューをお願いすることができるのかな？</span></li>
+<li>The better it looks, the less it feels like a place for me.<span class="ja">良さそうなお店ほど、自分の場所じゃない気がする</span></li>
+</ul>
+<h4>4. Have you settled on a salon yet?<span class="ja">行きたいお店は、もう決まっていますか？</span></h4>
+<p>It’s fine if you haven’t.<span class="ja">決まっていなくても大丈夫です。</span></p>
+<ul>
+<li>Yes — I know exactly where I’m going.<span class="ja">決まっている</span></li>
+<li>I’ve saved a few. I haven’t picked one.<span class="ja">何軒か見ている。まだ選べていない</span></li>
+<li>Not yet. I don’t know where to start.<span class="ja">まだ。どう探せばいいのか分からない</span></li>
+<li>I’ll decide once I’m there.<span class="ja">その場で決めるつもり</span></li>
+</ul>
+<h4>5. And you —<span class="ja">あなたは——</span></h4>
+<ul>
+<li>Visiting Japan.<span class="ja">日本に、行きます／来ています</span></li>
+<li>What comes after this?<span class="ja">このあとに、何がありますか？</span>
+<span class="ja" style="opacity:.85">Whichever comes first.　いちばん近いものを、一つ。</span>
+<ul>
+<li>There’s somewhere I’m going straight after the salon.<span class="ja">美容院のあと、予定しているところへ行く</span></li>
+<li>I’m meeting someone while I’m here.<span class="ja">人に会う予定がある</span></li>
+<li>Tomorrow I move on to the next place.<span class="ja">明日は、新しいところへの移動日</span></li>
+<li>My flight home isn’t far off.<span class="ja">もうすぐ、帰国予定</span></li>
+</ul></li>
+<li>Living in Japan.<span class="ja">日本で、暮らしています</span></li>
+<li>Something brought you here. What is it?<span class="ja">今、引っかかっているのは？</span>
+<ul>
+<li>Nothing’s wrong. It’s the same suggestion every time.<span class="ja">悪くはない。ただ、毎回おなじ提案になる</span></li>
+<li>I’ve never been sure they understand my hair.<span class="ja">髪質を本当に分かってもらえている気がしない</span></li>
+<li>I’ve been going there too long to start asking now.<span class="ja">長く通いすぎて、今さら言い出しにくい</span></li>
+<li>I moved. I’m starting over in a new area.<span class="ja">引っ越した。近くで探し直している</span></li>
+</ul></li>
+</ul>
+<h4>6. Left alone to dry, what does it do?<span class="ja">何もせずに乾かすと、どうなりますか？</span></h4>
+<p>Most people are somewhere between two. Choose the nearer one.<span class="ja">多くの人は2つの間です。近い方で。</span></p>
+<ul>
+<li>Straight — it falls flat.<span class="ja">まっすぐ。ぺたんと落ちる</span></li>
+<li>Wavy — it bends, more when it’s humid.<span class="ja">ウェーブ。湿気があるとうねる</span></li>
+<li>Curly — it forms rings on its own.<span class="ja">カール。自然に輪になる</span></li>
+<li>Coily — tight, springy, dense.<span class="ja">コイリー。細かく、密で、弾力がある</span></li>
+</ul>
+<h4>7. Has anything been done to it?<span class="ja">これまでに、何かしていますか？</span></h4>
+<p>Choose as many as apply.<span class="ja">当てはまるもの、いくつでも。</span></p>
+<ul>
+<li>Nothing. It’s never been colored.<span class="ja">何もしていない</span></li>
+<li>Colored, but never lightened.<span class="ja">カラーはしている。明るくはしていない</span></li>
+<li>Highlighted or bleached.<span class="ja">ハイライト・ブリーチをしている</span></li>
+<li>Permed, relaxed or straightened.<span class="ja">パーマ・縮毛矯正をしている</span></li>
+<li>Henna or a plant-based dye.<span class="ja">ヘナ・植物性の染料を使っている</span></li>
+</ul>
+<h4>8. So — what would you like done?<span class="ja">それで、何をしてもらいたいですか？</span></h4>
+<p>Choose as many as you like.<span class="ja">いくつ選んでも大丈夫です。</span></p>
+<ul>
+<li>Just the ends. Keep the length.<span class="ja">毛先だけ。長さは変えずに</span></li>
+<li>A different shape — bangs, layers, something new.<span class="ja">形を変えたい。前髪やレイヤーも</span></li>
+<li>Just the roots. They’ve grown out.<span class="ja">根元だけ。伸びたところを</span></li>
+<li>Color — lighter, darker, or a change of tone.<span class="ja">色を変えたい。明るく、暗く、トーンを</span></li>
+<li>Highlights, balayage or bleach.<span class="ja">ハイライト・バレイヤージュ・ブリーチ</span><br><b>This one runs about 4 hours. Leave the day open.</b><span class="ja">これは4時間ほどかかります。その日は、ゆとりをもって。</span></li>
+<li>No scissors. Treatment and scalp.<span class="ja">切らなくていい。ケアと頭皮を</span></li>
+<li>Make it behave — smoother, less frizz.<span class="ja">まとまるように。パサつきを抑えたい</span></li>
+<li>I haven’t decided. I’d rather talk it through.<span class="ja">まだ決めていない。相談しながら決めたい</span></li>
+<li>Everyone here looks so put together. I’d like to leave the same way.<span class="ja">日本の人みたいに、きちんと手入れされた感じにしたい</span></li>
+</ul>
+<h3>By hair texture<span class="ja">髪質ごとに、伝えていること</span></h3>
+<h4>Straight hair</h4>
+<p>This is the hair Japanese stylists have cut all their lives. Almost anywhere will do it well. If you want it slow, look for a salon with very few chairs.<span class="ja">日本の美容師がいちばん慣れている髪です。ゆっくりしたいなら、席数の少ないお店を。</span></p>
+<p>What to search: Osaka hair salon English / small salon Osaka few seats</p>
+<h4>Wavy hair</h4>
+<p>Look for someone who has cut waves before — ideally someone who can cut it dry, and who plans around the bend instead of drying it flat first.<span class="ja">うねりを切った経験のある人を。できれば濡らさずに切れる人を。</span></p>
+<p>What to search: dry cut wavy hair Osaka / wavy hair specialist Japan</p>
+<h4>Curly hair</h4>
+<p>If you want the curl kept as curl, look for a curl specialist — there are fewer of them here, and they are worth the train ride. If you would rather have it smoothed and blown out, most good salons can do that. The two are different jobs, so say which one you mean.<span class="ja">カールを活かしたいなら、カール専門の人を。ブローでまとめたいなら、多くのお店で対応できます。別の仕事なので、どちらなのかを先に伝えると早いです。</span></p>
+<p>What to search: curly hair specialist Osaka / blow dry smoothing Osaka salon</p>
+<h4>Coily hair</h4>
+<p>Look for a salon that names textured or coily hair on its own page. This is the one place to be certain before you book — a general salon meaning well is still the wrong hands.<span class="ja">コイリーを自分から掲げている店を。ここだけは、確かめてから決めてください。</span></p>
+<p>What to search: textured hair salon Tokyo / coily hair salon Japan</p>
+<h3>What you came for<span class="ja">望んでいるものの、日本での呼び名</span></h3>
+<h4>Head spa</h4>
+<p>You came here wanting one unhurried hour — hair, scalp, nothing rushed.<span class="ja">あなたが望んでいるものには、日本での呼び名があります。</span></p>
+<p>That has a name here, and you can ask for it by name.</p>
+<p>You came here for the ritual — the shampoo, the hands, the time they take.<span class="ja">時間のことだけ。遅れると、いちばん先に削られるのが、その「ゆっくり」の部分です。10分の遅れで、頭皮ケアが消えることがあります。</span></p>
+<p>One thing about time: if you are late, the slow part is the first thing to go. Ten minutes can cost you the head spa.</p>
+<p>You came here to leave with better hair than you arrived with.<span class="ja">当日の施術と、翌朝の扱い。両方を聞いてください。</span></p>
+<p>Ask what they will do, and what you should do the morning after. Both answers matter.</p>
+<p>You came here ready to do something you would not dare do at home.<span class="ja">その一行を、最初の文面に入れてください。「思い切りたい」と読んだ美容師は、組み立てそのものを変えます。</span></p>
+<p>Put that in the first message. A stylist who reads “I’m ready” plans a different day from one who reads “just a trim”.</p>
+<h3>The thing you paused on<span class="ja">ためらいへの答え</span></h3>
+<h4>You said you wouldn’t know how to explain it.</h4>
+<p>That is what this page is for. It is written out below, and you will not have to explain a thing.<span class="ja">そのために作りました。下に書いてあります。説明しなくて大丈夫です。</span></p>
+<p>In the message: I’m not confident explaining hair, even in my own language, so I’ve written everything down here.</p>
+<h4>You said there’s no way to tell if they’ve worked with hair like yours.</h4>
+<p>Then ask them outright. The message below ends with exactly that question.<span class="ja">はっきり聞きましょう。下の文面は、その質問で終わっています。</span></p>
+<p>In the message: The one thing I’m unsure about is whether you’ve worked with my hair texture before.</p>
+<h4>You wondered whether you could ask for something else once you are there.</h4>
+<p>Do ask — before the day, if you can. A time slot here is tied to the menu you booked, so anything added on the day can push into the appointment that follows.<span class="ja">聞いてみてください。できれば当日より前に。予約枠がメニューに紐づいているため、当日の追加はそのあとの予約に影響することがあります。</span></p>
+<p>In the message: One more thing — if I also wanted a treatment or a head spa, should I add it to the booking now rather than ask on the day?</p>
+<h4>You said the better it looks, the less it feels like yours.</h4>
+<p>The smaller and quieter a salon looks, the more it tends to run on a single message. That is all it takes.<span class="ja">静かで小さな店ほど、たいてい一通のメッセージで決まります。それだけです。</span></p>
+<p>In the message: Your work looks beautiful, and I wasn’t sure I should write — so I decided to just ask.</p>
+<h3>If you ask bridge<span class="ja">bridgeでお受けできること</span></h3>
+<p>And if it helps — I can take it on too.<span class="ja">bridgeでも施術可能です。</span></p>
+<p>One thing first: with henna in the hair, colour and chemical work aren’t safe to do — they can react. A cut, or a head massage, I can do. Tell me when it was last applied and I’ll tell you right away.<span class="ja">先にひとつだけ。ヘナ・植物性の染料が入っている髪には、薬剤を使う施術ができません。カットとヘッドマッサージなら承れます。最後に染めた時期を教えていただければ、すぐにお答えします。</span></p>
+<p>I don’t finish curls as curls, but smoothed and blown out I can. Send me the two photographs and I’ll tell you right away.<span class="ja">カールをカールのまま仕上げることはできませんが、ブローでまとめる方向なら承れます。写真を2枚送っていただければ、すぐにお答えします。</span></p>
+<p>Waves finished as waves — shaped around the movement — isn’t something I’m good at. Smoothed down, I can. Send me the two photographs and I’ll tell you right away.<span class="ja">うねりを活かして仕上げるのは得意ではありません。まとめる方向なら承れます。写真を2枚送っていただければ、すぐにお答えします。</span></p>
+<p>I’m sorry — coily hair is not something I take on. Please look for someone who works with it every day; that is the right call here.<span class="ja">申し訳ありませんが、コイリーヘアは承っておりません。日常的に扱っている担当者をお探しください。</span></p>
+<h3>Words to hold up on the day<span class="ja">当日、見せられる日本語</span></h3><ul>
+<li>head spa — the unhurried scalp hour<span class="ja">ヘッドスパ</span></li>
+<li>kami-shitsu kaizen — asked for as “glass hair” outside Japan<span class="ja">髪質改善</span></li>
+<li>the in-salon treatment, not a home one<span class="ja">トリートメント</span></li>
+<li>shukumou kyousei — known abroad as Japanese straightening<span class="ja">縮毛矯正</span></li>
+</ul>
+<p class="foot">Written by TAKA, a hairstylist in Kitahama, Osaka. Nothing on this page is saved or sent anywhere.<span class="ja">大阪・北浜の美容師TAKAが書いています。このページの入力はどこにも保存されません。</span></p>
+</section>
 </body>
 </html>
